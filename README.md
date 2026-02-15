@@ -1,13 +1,36 @@
-# CppND: Memory Management Chatbot
+# ChatBot 项目（基于 wxWidgets 的图形界面知识图谱对话机器人）
 
-This repository contains the result of the third project of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The project concerns a simple chatbot that answers on questions about memory management concepts. While the chatbot functionality itself is rather limited in terms of possible questions and answers, the project emphasized learnings from the Memory Management course of the program which can be seen "behind the scenes" in the chatbot implementation that make use of e.g. smart pointers, move semantics etc... 
+这是一个使用 C++ 实现的图形界面聊天机器人项目，包含知识图谱（有向图）结构、对话逻辑引擎和 wxWidgets GUI 界面。
 
-The repository you're looking at originates from [this Udacity starter code repo](https://github.com/udacity/CppND-Memory-Management-Chatbot.git) and contains the specific implementations/solutions that I wrote to pass the course.
+我通过**阅读、理解与功能扩展**的方式深度学习这个项目，主要目标是掌握现代 C++ 核心特性，并在真实项目中实践内存安全、性能优化与跨平台构建。
 
-## Basic Build Instructions
+## 这个项目让我收获了什么
 
-0. ( Review the desciption of dependencies that can be found [here](https://github.com/udacity/CppND-Memory-Management-Chatbot.git)! )
-1. Clone this repo.
-2. Make a build directory in the top level directory: `mkdir build && cd build`
-3. Compile: `cmake .. && make`
-4. Run it: `./membot`.
+通过对原有代码的学习和功能增强，我系统地学习并在AI agent帮助下落地了以下现代 C++ 开发实践：
+
+- **所有权语义的清晰表达**  
+  使用 `std::unique_ptr` 明确表达独占所有权（例如 GUI → ChatBot 的生命周期管理）  
+  使用 `std::weak_ptr` 安全地打破循环引用并实现非拥有型引用
+
+- **跨平台构建与依赖管理实战**  
+  使用 **CMake** 重构构建系统，并在 **Visual Studio + vcpkg** 环境下完成 wxWidgets 的集成  
+  适配了 Windows 开发环境，并验证了在不同机器上的可重复构建能力
+
+- **核心逻辑的阅读与安全修改**  
+  深入理解原有对话引擎的有限状态机 + 知识图谱遍历逻辑  
+  独立完成了“退出”命令的健壮实现，并增加了**输入容错**处理（忽略大小写、多余空格、常见拼写变体等）
+
+## 主要完成的工作
+
+- 使用 CMake + vcpkg 重新组织项目依赖与构建流程
+- 增强对话引擎：实现可靠的退出机制 + 输入宽容匹配
+- 规范化代码风格，增加关键位置的注释
+
+## 技术关键字
+
+C++17/20 · 智能指针 · unique_ptr · shared_ptr · weak_ptr · 移动语义 · Rule of Five · RAII · CMake · vcpkg · wxWidgets · 知识图谱 · 内存泄漏修复 · 输入容错 · 有限状态机
+
+欢迎 clone / star / fork / issue / PR ～  
+也非常欢迎讨论现代 C++ 在 GUI 项目中的最佳实践！
+
+最后更新：2026年
